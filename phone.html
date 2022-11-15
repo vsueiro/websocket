@@ -9,8 +9,17 @@
     <body>
         <h1>📱 Phone</h1>
 
-        <script>
+        <button id="button">Send data</button>
 
+        <script>
+            function send() {
+                const now = new Date()
+                const timestamp = now.toISOString()
+
+                console.log( timestamp )
+            }
+
+            button.onclick = send
         </script>
     </body>
 </html>

@@ -17,7 +17,16 @@ const io = new Server(server);
 io.on('connection', (socket) => {
     socket.on('message', (message) => {
         console.log('message: ' + message);
+
+        // Sends data to everyone
+        io.emit('message', message);
     });
+});
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
 });
 
 server.listen(3000, () => {

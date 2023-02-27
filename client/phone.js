@@ -1,16 +1,15 @@
-// This didn’t work
-// let socket = io('ws://localhost:3000');
+const host = location.protocol + "//" + location.hostname;
 
-// This did (found at https://stackoverflow.com/q/44628363)
-// let socket = io('http://localhost:8080', { transports : ['websocket'] });
-
-let socket = io('https://server.supertunnel.app/', { transports : ['websocket'] });
+// From https://stackoverflow.com/q/44628363
+const socket = io(host + ":3000", {
+  transports: ["websocket"],
+});
 
 function send() {
-    const now = new Date()
-    const timestamp = now.toISOString()
+  const now = new Date();
+  const timestamp = now.toISOString();
 
-    socket.emit('message', timestamp);
+  socket.emit("message", timestamp);
 }
 
-button.onclick = send
+button.onclick = send;
